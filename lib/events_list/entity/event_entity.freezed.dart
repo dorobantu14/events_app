@@ -23,6 +23,7 @@ mixin _$EventEntity {
   String get name => throw _privateConstructorUsedError;
   List<dynamic> get images => throw _privateConstructorUsedError;
   SalesEntity get sales => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $EventEntityCopyWith<$Res> {
           EventEntity value, $Res Function(EventEntity) then) =
       _$EventEntityCopyWithImpl<$Res, EventEntity>;
   @useResult
-  $Res call({String name, List<dynamic> images, SalesEntity sales});
+  $Res call({String name, List<dynamic> images, SalesEntity sales, String url});
 
   $SalesEntityCopyWith<$Res> get sales;
 }
@@ -57,6 +58,7 @@ class _$EventEntityCopyWithImpl<$Res, $Val extends EventEntity>
     Object? name = null,
     Object? images = null,
     Object? sales = null,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -71,6 +73,10 @@ class _$EventEntityCopyWithImpl<$Res, $Val extends EventEntity>
           ? _value.sales
           : sales // ignore: cast_nullable_to_non_nullable
               as SalesEntity,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -89,7 +95,7 @@ abstract class _$$_EventCopyWith<$Res> implements $EventEntityCopyWith<$Res> {
       __$$_EventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<dynamic> images, SalesEntity sales});
+  $Res call({String name, List<dynamic> images, SalesEntity sales, String url});
 
   @override
   $SalesEntityCopyWith<$Res> get sales;
@@ -108,6 +114,7 @@ class __$$_EventCopyWithImpl<$Res>
     Object? name = null,
     Object? images = null,
     Object? sales = null,
+    Object? url = null,
   }) {
     return _then(_$_Event(
       name: null == name
@@ -122,6 +129,10 @@ class __$$_EventCopyWithImpl<$Res>
           ? _value.sales
           : sales // ignore: cast_nullable_to_non_nullable
               as SalesEntity,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -132,7 +143,8 @@ class _$_Event implements _Event {
   const _$_Event(
       {required this.name,
       required final List<dynamic> images,
-      required this.sales})
+      required this.sales,
+      required this.url})
       : _images = images;
 
   factory _$_Event.fromJson(Map<String, dynamic> json) =>
@@ -150,10 +162,12 @@ class _$_Event implements _Event {
 
   @override
   final SalesEntity sales;
+  @override
+  final String url;
 
   @override
   String toString() {
-    return 'EventEntity(name: $name, images: $images, sales: $sales)';
+    return 'EventEntity(name: $name, images: $images, sales: $sales, url: $url)';
   }
 
   @override
@@ -163,13 +177,14 @@ class _$_Event implements _Event {
             other is _$_Event &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            (identical(other.sales, sales) || other.sales == sales));
+            (identical(other.sales, sales) || other.sales == sales) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_images), sales);
+  int get hashCode => Object.hash(runtimeType, name,
+      const DeepCollectionEquality().hash(_images), sales, url);
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +204,8 @@ abstract class _Event implements EventEntity {
   const factory _Event(
       {required final String name,
       required final List<dynamic> images,
-      required final SalesEntity sales}) = _$_Event;
+      required final SalesEntity sales,
+      required final String url}) = _$_Event;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
@@ -199,6 +215,8 @@ abstract class _Event implements EventEntity {
   List<dynamic> get images;
   @override
   SalesEntity get sales;
+  @override
+  String get url;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>

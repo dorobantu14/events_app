@@ -11,6 +11,7 @@ class EventEntity with _$EventEntity {
     required String name,
     required List<dynamic> images,
     required SalesEntity sales,
+    required String url,
   }) = _Event;
 
   factory EventEntity.fromJson(Map<String, dynamic> json) =>

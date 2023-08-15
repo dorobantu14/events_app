@@ -1,28 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ticketmaster/core/Strings/strings.dart';
-import 'package:ticketmaster/core/colors/app_colors.dart';
-import 'package:ticketmaster/core/text_styles/text_styles.dart';
+import 'package:ticketmaster/core/core.dart';
+import 'package:ticketmaster/events_list/presentation/event_details.dart';
 
 class EventCard extends StatelessWidget {
   final String name;
   final String date;
-  final String imageUrl;
+  final List<String> images;
 
   const EventCard({
     Key? key,
     required this.name,
     required this.date,
-    required this.imageUrl,
+    required this.images,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-      child: Container(
-        decoration: getCardDecoration(),
-        child: getCardBody(),
+      child: GestureDetector(
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return EventDetails(images: images, name: name);
+              });
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.lightGreyColor, //New
+                blurRadius: 20.0,
+              )
+            ],
+          ),
+          child: getCardBody(),
+        ),
       ),
     );
   }
@@ -52,19 +69,6 @@ class EventCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 16, right: 16),
       child: SvgPicture.asset(Strings.heartIconPath),
-    );
-  }
-
-  BoxDecoration getCardDecoration() {
-    return BoxDecoration(
-      borderRadius: const BorderRadius.all(Radius.circular(16)),
-      color: Colors.white,
-      boxShadow: [
-        BoxShadow(
-          color: AppColors.lightGreyColor, //New
-          blurRadius: 20.0,
-        )
-      ],
     );
   }
 
@@ -105,7 +109,7 @@ class EventCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(12)),
       child: Image.network(
-        imageUrl,
+        images.first,
         width: 81,
         height: 81,
         fit: BoxFit.fill,

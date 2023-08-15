@@ -7,8 +7,8 @@ part 'public_entity.g.dart';
 @freezed
 class PublicEntity with _$PublicEntity {
   const factory PublicEntity({
-    required String startDateTime,
-    required String endDateTime,
+    required String? startDateTime,
+    required String? endDateTime,
   }) = _Public;
 
   factory PublicEntity.fromJson(Map<String, dynamic> json) =>

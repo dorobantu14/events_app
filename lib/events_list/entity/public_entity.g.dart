@@ -7,8 +7,8 @@ part of 'public_entity.dart';
 // **************************************************************************
 
 _$_Public _$$_PublicFromJson(Map<String, dynamic> json) => _$_Public(
-      startDateTime: json['startDateTime'] as String,
-      endDateTime: json['endDateTime'] as String,
+      startDateTime: json['startDateTime'] as String?,
+      endDateTime: json['endDateTime'] as String?,
     );
 
 Map<String, dynamic> _$$_PublicToJson(_$_Public instance) => <String, dynamic>{

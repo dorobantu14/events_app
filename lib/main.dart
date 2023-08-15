@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:ticketmaster/app/app_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ticketmaster/core/core.dart';
+import 'package:ticketmaster/events_list/data/events_data.dart';
+import 'package:ticketmaster/events_list/domain/bloc/events_bloc.dart';
+import 'package:ticketmaster/events_list/domain/repository/events_repository.dart';
+import 'package:ticketmaster/events_list/presentation/events_list_screen.dart';
 
 void main() {
-  final appRouter = AppRouter();
-
-  runApp(MyApp(appRouter: appRouter));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final AppRouter _appRouter;
+  final EventsRepository repository = EventsRepository(eventsData: EventsData());
 
-  const MyApp({super.key, required AppRouter appRouter})
-      : _appRouter = appRouter;
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Todo list',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+    return MaterialApp(
+      title: Strings.appTitle,
       debugShowCheckedModeBanner: false,
+      home: BlocProvider(
+        create: (context) => EventsBloc(repository),
+        child: const EventsListScreen(),
+      ),
     );
   }
 }

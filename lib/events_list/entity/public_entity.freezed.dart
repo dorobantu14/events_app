@@ -20,8 +20,8 @@ PublicEntity _$PublicEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PublicEntity {
-  String get startDateTime => throw _privateConstructorUsedError;
-  String get endDateTime => throw _privateConstructorUsedError;
+  String? get startDateTime => throw _privateConstructorUsedError;
+  String? get endDateTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $PublicEntityCopyWith<$Res> {
           PublicEntity value, $Res Function(PublicEntity) then) =
       _$PublicEntityCopyWithImpl<$Res, PublicEntity>;
   @useResult
-  $Res call({String startDateTime, String endDateTime});
+  $Res call({String? startDateTime, String? endDateTime});
 }
 
 /// @nodoc
@@ -51,18 +51,18 @@ class _$PublicEntityCopyWithImpl<$Res, $Val extends PublicEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDateTime = null,
-    Object? endDateTime = null,
+    Object? startDateTime = freezed,
+    Object? endDateTime = freezed,
   }) {
     return _then(_value.copyWith(
-      startDateTime: null == startDateTime
+      startDateTime: freezed == startDateTime
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
-      endDateTime: null == endDateTime
+              as String?,
+      endDateTime: freezed == endDateTime
           ? _value.endDateTime
           : endDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -73,7 +73,7 @@ abstract class _$$_PublicCopyWith<$Res> implements $PublicEntityCopyWith<$Res> {
       __$$_PublicCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String startDateTime, String endDateTime});
+  $Res call({String? startDateTime, String? endDateTime});
 }
 
 /// @nodoc
@@ -86,18 +86,18 @@ class __$$_PublicCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDateTime = null,
-    Object? endDateTime = null,
+    Object? startDateTime = freezed,
+    Object? endDateTime = freezed,
   }) {
     return _then(_$_Public(
-      startDateTime: null == startDateTime
+      startDateTime: freezed == startDateTime
           ? _value.startDateTime
           : startDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
-      endDateTime: null == endDateTime
+              as String?,
+      endDateTime: freezed == endDateTime
           ? _value.endDateTime
           : endDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -111,9 +111,9 @@ class _$_Public implements _Public {
       _$$_PublicFromJson(json);
 
   @override
-  final String startDateTime;
+  final String? startDateTime;
   @override
-  final String endDateTime;
+  final String? endDateTime;
 
   @override
   String toString() {
@@ -151,15 +151,15 @@ class _$_Public implements _Public {
 
 abstract class _Public implements PublicEntity {
   const factory _Public(
-      {required final String startDateTime,
-      required final String endDateTime}) = _$_Public;
+      {required final String? startDateTime,
+      required final String? endDateTime}) = _$_Public;
 
   factory _Public.fromJson(Map<String, dynamic> json) = _$_Public.fromJson;
 
   @override
-  String get startDateTime;
+  String? get startDateTime;
   @override
-  String get endDateTime;
+  String? get endDateTime;
   @override
   @JsonKey(ignore: true)
   _$$_PublicCopyWith<_$_Public> get copyWith =>
