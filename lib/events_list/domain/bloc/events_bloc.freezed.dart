@@ -16,42 +16,27 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EventsEvent {
-  List<EventEntity> get eventsList => throw _privateConstructorUsedError;
   int get numberOfEvents => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<EventEntity> eventsList, int numberOfEvents)
-        getAllEvents,
-    required TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)
+    required TResult Function(int numberOfEvents) getAllEvents,
+    required TResult Function(String genre, int numberOfEvents)
         getEventsByGenre,
-    required TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)
-        getEventsByName,
+    required TResult Function(String name, int numberOfEvents) getEventsByName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult? Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult? Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult? Function(int numberOfEvents)? getAllEvents,
+    TResult? Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult? Function(String name, int numberOfEvents)? getEventsByName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult Function(int numberOfEvents)? getAllEvents,
+    TResult Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult Function(String name, int numberOfEvents)? getEventsByName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,7 +74,7 @@ abstract class $EventsEventCopyWith<$Res> {
           EventsEvent value, $Res Function(EventsEvent) then) =
       _$EventsEventCopyWithImpl<$Res, EventsEvent>;
   @useResult
-  $Res call({List<EventEntity> eventsList, int numberOfEvents});
+  $Res call({int numberOfEvents});
 }
 
 /// @nodoc
@@ -105,14 +90,9 @@ class _$EventsEventCopyWithImpl<$Res, $Val extends EventsEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? eventsList = null,
     Object? numberOfEvents = null,
   }) {
     return _then(_value.copyWith(
-      eventsList: null == eventsList
-          ? _value.eventsList
-          : eventsList // ignore: cast_nullable_to_non_nullable
-              as List<EventEntity>,
       numberOfEvents: null == numberOfEvents
           ? _value.numberOfEvents
           : numberOfEvents // ignore: cast_nullable_to_non_nullable
@@ -129,7 +109,7 @@ abstract class _$$_AllEventsSearchEventCopyWith<$Res>
       __$$_AllEventsSearchEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<EventEntity> eventsList, int numberOfEvents});
+  $Res call({int numberOfEvents});
 }
 
 /// @nodoc
@@ -143,14 +123,9 @@ class __$$_AllEventsSearchEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? eventsList = null,
     Object? numberOfEvents = null,
   }) {
     return _then(_$_AllEventsSearchEvent(
-      eventsList: null == eventsList
-          ? _value._eventsList
-          : eventsList // ignore: cast_nullable_to_non_nullable
-              as List<EventEntity>,
       numberOfEvents: null == numberOfEvents
           ? _value.numberOfEvents
           : numberOfEvents // ignore: cast_nullable_to_non_nullable
@@ -162,25 +137,14 @@ class __$$_AllEventsSearchEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AllEventsSearchEvent implements _AllEventsSearchEvent {
-  const _$_AllEventsSearchEvent(
-      {required final List<EventEntity> eventsList,
-      required this.numberOfEvents})
-      : _eventsList = eventsList;
-
-  final List<EventEntity> _eventsList;
-  @override
-  List<EventEntity> get eventsList {
-    if (_eventsList is EqualUnmodifiableListView) return _eventsList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_eventsList);
-  }
+  const _$_AllEventsSearchEvent({required this.numberOfEvents});
 
   @override
   final int numberOfEvents;
 
   @override
   String toString() {
-    return 'EventsEvent.getAllEvents(eventsList: $eventsList, numberOfEvents: $numberOfEvents)';
+    return 'EventsEvent.getAllEvents(numberOfEvents: $numberOfEvents)';
   }
 
   @override
@@ -188,15 +152,12 @@ class _$_AllEventsSearchEvent implements _AllEventsSearchEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AllEventsSearchEvent &&
-            const DeepCollectionEquality()
-                .equals(other._eventsList, _eventsList) &&
             (identical(other.numberOfEvents, numberOfEvents) ||
                 other.numberOfEvents == numberOfEvents));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_eventsList), numberOfEvents);
+  int get hashCode => Object.hash(runtimeType, numberOfEvents);
 
   @JsonKey(ignore: true)
   @override
@@ -208,48 +169,34 @@ class _$_AllEventsSearchEvent implements _AllEventsSearchEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<EventEntity> eventsList, int numberOfEvents)
-        getAllEvents,
-    required TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)
+    required TResult Function(int numberOfEvents) getAllEvents,
+    required TResult Function(String genre, int numberOfEvents)
         getEventsByGenre,
-    required TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)
-        getEventsByName,
+    required TResult Function(String name, int numberOfEvents) getEventsByName,
   }) {
-    return getAllEvents(eventsList, numberOfEvents);
+    return getAllEvents(numberOfEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult? Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult? Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult? Function(int numberOfEvents)? getAllEvents,
+    TResult? Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult? Function(String name, int numberOfEvents)? getEventsByName,
   }) {
-    return getAllEvents?.call(eventsList, numberOfEvents);
+    return getAllEvents?.call(numberOfEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult Function(int numberOfEvents)? getAllEvents,
+    TResult Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult Function(String name, int numberOfEvents)? getEventsByName,
     required TResult orElse(),
   }) {
     if (getAllEvents != null) {
-      return getAllEvents(eventsList, numberOfEvents);
+      return getAllEvents(numberOfEvents);
     }
     return orElse();
   }
@@ -290,12 +237,9 @@ class _$_AllEventsSearchEvent implements _AllEventsSearchEvent {
 }
 
 abstract class _AllEventsSearchEvent implements EventsEvent {
-  const factory _AllEventsSearchEvent(
-      {required final List<EventEntity> eventsList,
-      required final int numberOfEvents}) = _$_AllEventsSearchEvent;
+  const factory _AllEventsSearchEvent({required final int numberOfEvents}) =
+      _$_AllEventsSearchEvent;
 
-  @override
-  List<EventEntity> get eventsList;
   @override
   int get numberOfEvents;
   @override
@@ -312,7 +256,7 @@ abstract class _$$_GenreSearchEventCopyWith<$Res>
       __$$_GenreSearchEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<EventEntity> eventsList, String genre, int numberOfEvents});
+  $Res call({String genre, int numberOfEvents});
 }
 
 /// @nodoc
@@ -326,15 +270,10 @@ class __$$_GenreSearchEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? eventsList = null,
     Object? genre = null,
     Object? numberOfEvents = null,
   }) {
     return _then(_$_GenreSearchEvent(
-      eventsList: null == eventsList
-          ? _value._eventsList
-          : eventsList // ignore: cast_nullable_to_non_nullable
-              as List<EventEntity>,
       genre: null == genre
           ? _value.genre
           : genre // ignore: cast_nullable_to_non_nullable
@@ -351,18 +290,7 @@ class __$$_GenreSearchEventCopyWithImpl<$Res>
 
 class _$_GenreSearchEvent implements _GenreSearchEvent {
   const _$_GenreSearchEvent(
-      {required final List<EventEntity> eventsList,
-      required this.genre,
-      required this.numberOfEvents})
-      : _eventsList = eventsList;
-
-  final List<EventEntity> _eventsList;
-  @override
-  List<EventEntity> get eventsList {
-    if (_eventsList is EqualUnmodifiableListView) return _eventsList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_eventsList);
-  }
+      {required this.genre, required this.numberOfEvents});
 
   @override
   final String genre;
@@ -371,7 +299,7 @@ class _$_GenreSearchEvent implements _GenreSearchEvent {
 
   @override
   String toString() {
-    return 'EventsEvent.getEventsByGenre(eventsList: $eventsList, genre: $genre, numberOfEvents: $numberOfEvents)';
+    return 'EventsEvent.getEventsByGenre(genre: $genre, numberOfEvents: $numberOfEvents)';
   }
 
   @override
@@ -379,16 +307,13 @@ class _$_GenreSearchEvent implements _GenreSearchEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GenreSearchEvent &&
-            const DeepCollectionEquality()
-                .equals(other._eventsList, _eventsList) &&
             (identical(other.genre, genre) || other.genre == genre) &&
             (identical(other.numberOfEvents, numberOfEvents) ||
                 other.numberOfEvents == numberOfEvents));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_eventsList), genre, numberOfEvents);
+  int get hashCode => Object.hash(runtimeType, genre, numberOfEvents);
 
   @JsonKey(ignore: true)
   @override
@@ -399,48 +324,34 @@ class _$_GenreSearchEvent implements _GenreSearchEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<EventEntity> eventsList, int numberOfEvents)
-        getAllEvents,
-    required TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)
+    required TResult Function(int numberOfEvents) getAllEvents,
+    required TResult Function(String genre, int numberOfEvents)
         getEventsByGenre,
-    required TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)
-        getEventsByName,
+    required TResult Function(String name, int numberOfEvents) getEventsByName,
   }) {
-    return getEventsByGenre(eventsList, genre, numberOfEvents);
+    return getEventsByGenre(genre, numberOfEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult? Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult? Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult? Function(int numberOfEvents)? getAllEvents,
+    TResult? Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult? Function(String name, int numberOfEvents)? getEventsByName,
   }) {
-    return getEventsByGenre?.call(eventsList, genre, numberOfEvents);
+    return getEventsByGenre?.call(genre, numberOfEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult Function(int numberOfEvents)? getAllEvents,
+    TResult Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult Function(String name, int numberOfEvents)? getEventsByName,
     required TResult orElse(),
   }) {
     if (getEventsByGenre != null) {
-      return getEventsByGenre(eventsList, genre, numberOfEvents);
+      return getEventsByGenre(genre, numberOfEvents);
     }
     return orElse();
   }
@@ -482,12 +393,9 @@ class _$_GenreSearchEvent implements _GenreSearchEvent {
 
 abstract class _GenreSearchEvent implements EventsEvent {
   const factory _GenreSearchEvent(
-      {required final List<EventEntity> eventsList,
-      required final String genre,
+      {required final String genre,
       required final int numberOfEvents}) = _$_GenreSearchEvent;
 
-  @override
-  List<EventEntity> get eventsList;
   String get genre;
   @override
   int get numberOfEvents;
@@ -505,7 +413,7 @@ abstract class _$$_NameSearchEventCopyWith<$Res>
       __$$_NameSearchEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<EventEntity> eventsList, String name, int numberOfEvents});
+  $Res call({String name, int numberOfEvents});
 }
 
 /// @nodoc
@@ -519,15 +427,10 @@ class __$$_NameSearchEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? eventsList = null,
     Object? name = null,
     Object? numberOfEvents = null,
   }) {
     return _then(_$_NameSearchEvent(
-      eventsList: null == eventsList
-          ? _value._eventsList
-          : eventsList // ignore: cast_nullable_to_non_nullable
-              as List<EventEntity>,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -543,19 +446,7 @@ class __$$_NameSearchEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_NameSearchEvent implements _NameSearchEvent {
-  const _$_NameSearchEvent(
-      {required final List<EventEntity> eventsList,
-      required this.name,
-      required this.numberOfEvents})
-      : _eventsList = eventsList;
-
-  final List<EventEntity> _eventsList;
-  @override
-  List<EventEntity> get eventsList {
-    if (_eventsList is EqualUnmodifiableListView) return _eventsList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_eventsList);
-  }
+  const _$_NameSearchEvent({required this.name, required this.numberOfEvents});
 
   @override
   final String name;
@@ -564,7 +455,7 @@ class _$_NameSearchEvent implements _NameSearchEvent {
 
   @override
   String toString() {
-    return 'EventsEvent.getEventsByName(eventsList: $eventsList, name: $name, numberOfEvents: $numberOfEvents)';
+    return 'EventsEvent.getEventsByName(name: $name, numberOfEvents: $numberOfEvents)';
   }
 
   @override
@@ -572,16 +463,13 @@ class _$_NameSearchEvent implements _NameSearchEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NameSearchEvent &&
-            const DeepCollectionEquality()
-                .equals(other._eventsList, _eventsList) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.numberOfEvents, numberOfEvents) ||
                 other.numberOfEvents == numberOfEvents));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_eventsList), name, numberOfEvents);
+  int get hashCode => Object.hash(runtimeType, name, numberOfEvents);
 
   @JsonKey(ignore: true)
   @override
@@ -592,48 +480,34 @@ class _$_NameSearchEvent implements _NameSearchEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<EventEntity> eventsList, int numberOfEvents)
-        getAllEvents,
-    required TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)
+    required TResult Function(int numberOfEvents) getAllEvents,
+    required TResult Function(String genre, int numberOfEvents)
         getEventsByGenre,
-    required TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)
-        getEventsByName,
+    required TResult Function(String name, int numberOfEvents) getEventsByName,
   }) {
-    return getEventsByName(eventsList, name, numberOfEvents);
+    return getEventsByName(name, numberOfEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult? Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult? Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult? Function(int numberOfEvents)? getAllEvents,
+    TResult? Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult? Function(String name, int numberOfEvents)? getEventsByName,
   }) {
-    return getEventsByName?.call(eventsList, name, numberOfEvents);
+    return getEventsByName?.call(name, numberOfEvents);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<EventEntity> eventsList, int numberOfEvents)?
-        getAllEvents,
-    TResult Function(
-            List<EventEntity> eventsList, String genre, int numberOfEvents)?
-        getEventsByGenre,
-    TResult Function(
-            List<EventEntity> eventsList, String name, int numberOfEvents)?
-        getEventsByName,
+    TResult Function(int numberOfEvents)? getAllEvents,
+    TResult Function(String genre, int numberOfEvents)? getEventsByGenre,
+    TResult Function(String name, int numberOfEvents)? getEventsByName,
     required TResult orElse(),
   }) {
     if (getEventsByName != null) {
-      return getEventsByName(eventsList, name, numberOfEvents);
+      return getEventsByName(name, numberOfEvents);
     }
     return orElse();
   }
@@ -675,12 +549,9 @@ class _$_NameSearchEvent implements _NameSearchEvent {
 
 abstract class _NameSearchEvent implements EventsEvent {
   const factory _NameSearchEvent(
-      {required final List<EventEntity> eventsList,
-      required final String name,
+      {required final String name,
       required final int numberOfEvents}) = _$_NameSearchEvent;
 
-  @override
-  List<EventEntity> get eventsList;
   String get name;
   @override
   int get numberOfEvents;

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ticketmaster/core/core.dart';
-import 'package:ticketmaster/events_list/entity/event_entity.dart';
 import 'package:ticketmaster/events_list/presentation/event_card.dart';
 import 'package:ticketmaster/events_list/presentation/filter_bar.dart';
 import 'package:ticketmaster/events_list/domain/bloc/events_bloc.dart';
@@ -24,8 +23,9 @@ class _EventsListScreenState extends State<EventsListScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<EventsBloc>().add(
-        EventsEvent.getAllEvents(eventsList: [], numberOfEvents: newEventsIndex));
+    context
+        .read<EventsBloc>()
+        .add(EventsEvent.getAllEvents(numberOfEvents: newEventsIndex));
     _scrollController.addListener(loadMoreEvents);
   }
 
@@ -39,15 +39,12 @@ class _EventsListScreenState extends State<EventsListScreen> {
         newEventsIndex += eventsCount;
       });
       if (status == EventsStatus.eventsFetched) {
-        bloc.add(EventsEvent.getAllEvents(
-            eventsList: [], numberOfEvents: newEventsIndex));
+        bloc.add(EventsEvent.getAllEvents(numberOfEvents: newEventsIndex));
       } else if (status == EventsStatus.eventsSearchedByGenre) {
         bloc.add(EventsEvent.getEventsByGenre(
-            eventsList: [],
             genre: bloc.state.genre, numberOfEvents: newEventsIndex));
       } else if (status == EventsStatus.eventsSearchedByName) {
         bloc.add(EventsEvent.getEventsByName(
-            eventsList: [],
             name: bloc.state.name, numberOfEvents: newEventsIndex));
       }
     }
@@ -103,7 +100,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
   Widget buildEventsSection(EventsState state) {
     return state.status == EventsStatus.loading
         ? getLoader(state)
-        : state.status == EventsStatus.noEventsFound || state.status == EventsStatus.failure
+        : state.eventsList.isEmpty
             ? Center(child: SvgPicture.asset(Strings.noResultIconPath))
             : getRefreshIndicator(state);
   }
@@ -118,25 +115,32 @@ class _EventsListScreenState extends State<EventsListScreen> {
   }
 
   Widget getEventsList(EventsState state) {
+    if (state.eventsList.length <= eventsIndex) {
+      eventsIndex = 0;
+      newEventsIndex = 20;
+    }
     return ListView.builder(
       controller: _scrollController,
-      itemCount: newEventsIndex - eventsIndex,
+      itemCount: state.eventsList.length - eventsIndex,
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        EventEntity event = state.eventsList[eventsIndex + index];
-        final DateTime startDate =
-            DateTime.parse(event.sales.public.startDateTime);
-        final DateTime endDate =
-            DateTime.parse(event.sales.public.endDateTime);
-        final String formattedStartDate =
-            DateTimeExtention(startDate).dayMonthYear;
-        final String formattedEndDate =
-            DateTimeExtention(endDate).dayMonthYear;
+        final event = state.eventsList[eventsIndex + index];
+        String date = Strings.noDateText;
+        if (event.sales.public.startDateTime != null &&
+            event.sales.public.endDateTime != null) {
+          final formattedStartDate =
+              DateTimeExtention(event.sales.public.startDateTime!)
+                  .dayMonthYearFormat;
+          final formattedEndDate =
+              DateTimeExtention(event.sales.public.endDateTime!)
+                  .dayMonthYearFormat;
+          date = '$formattedStartDate - $formattedEndDate';
+        }
         return EventCard(
           name: event.name,
-          date: '$formattedStartDate - $formattedEndDate',
-          imageUrl: event.images[0]['url'],
+          date: date,
+          images: event.images.map((e) => e['url'].toString()).toList(),
         );
       },
     );

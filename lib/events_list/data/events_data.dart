@@ -9,7 +9,7 @@ class EventsData {
   final String apiKey = Env.apiKey;
 
   Future<List<EventEntity>> getEvents(int numberOfEvents) async {
-    var response = await _dio.get(
+    final response = await _dio.get(
         'https://app.ticketmaster.com/discovery/v2/events?apikey=$apiKey&size=$numberOfEvents');
     final List<EventEntity> eventsList = [];
     for (var event in response.data['_embedded']['events']) {
@@ -19,7 +19,7 @@ class EventsData {
   }
 
   Future<List<EventEntity>> getEventsByGenre(String genre, int numberOfEvents) async {
-    var response = await _dio.get(
+    final response = await _dio.get(
         'https://app.ticketmaster.com/discovery/v2/events?apikey=$apiKey&classificationName=$genre&size=$numberOfEvents');
     final List<EventEntity> eventsList = [];
     if (response.data['page']['totalElements'] == 0) {
@@ -33,7 +33,7 @@ class EventsData {
   }
 
   Future<List<EventEntity>> getEventsByName(String keyword, int numberOfEvents) async {
-    var response = await _dio.get(
+    final response = await _dio.get(
         'https://app.ticketmaster.com/discovery/v2/events?apikey=$apiKey&keyword=$keyword&size=$numberOfEvents');
     final List<EventEntity> eventsList = [];
     if (response.data['page']['totalElements'] == 0) {

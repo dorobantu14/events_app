@@ -19,4 +19,6 @@ abstract class Strings {
   static const String sportText = 'Sport';
   static const String cultureText = 'Culture';
   static const String flutterText = 'Flutter';
+  static const String noDateText = 'No date';
+  static const String goBackText = 'Go back';
 }

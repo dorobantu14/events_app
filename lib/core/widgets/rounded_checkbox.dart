@@ -14,14 +14,14 @@ class RoundedCheckbox extends StatelessWidget {
     return Container(
       width: 20,
       height: 20,
-      decoration: getBoxDecoration(),
+      decoration: _getBoxDecoration(),
       child: value
           ? Icon(Icons.check, size: 18.0, color: AppColors.whiteColor)
           : null,
     );
   }
 
-  BoxDecoration getBoxDecoration() {
+  BoxDecoration _getBoxDecoration() {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(5),
       shape: BoxShape.rectangle, // Use a circular shape

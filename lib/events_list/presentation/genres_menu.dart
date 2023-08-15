@@ -107,11 +107,11 @@ class _GenresMenuState extends State<GenresMenu> {
       genresCheckboxes.fillRange(1, genresCheckboxes.length, false);
       genresCheckboxes[listOfGenres.indexOf(choice)] = true;
       if (choice == Strings.allGenresText) {
-        context.read<EventsBloc>().add(
-            const EventsEvent.getAllEvents(eventsList: [], numberOfEvents: 20));
+        context
+            .read<EventsBloc>()
+            .add(const EventsEvent.getAllEvents(numberOfEvents: 20));
       } else {
         context.read<EventsBloc>().add(EventsEvent.getEventsByGenre(
-              eventsList: [],
               genre: choice,
               numberOfEvents: 20,
             ));

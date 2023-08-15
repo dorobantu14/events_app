@@ -32,12 +32,36 @@ class _FilterBarState extends State<FilterBar> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Container(
         height: 48,
-        decoration: focusNode.hasFocus ? getBoxDecoration() : null,
+        decoration: focusNode.hasFocus
+            ? BoxDecoration(
+                borderRadius: BorderRadius.circular(100.0),
+                border: Border.all(
+                  color: AppColors.orangeColor.withOpacity(0.3),
+                  width: 2.0,
+                ),
+              )
+            : const BoxDecoration(),
         child: TextFormField(
           initialValue: initialValueText,
           cursorColor: AppColors.greyColor,
           focusNode: focusNode,
-          decoration: getDecoration(),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(vertical: 12),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: AppColors.orangeColor,
+              ),
+              borderRadius: BorderRadius.circular(100),
+            ),
+            suffixIcon: getGenreFilter(),
+            prefixIcon: getPrefixIcon(),
+            hintText: Strings.searchText,
+            hintStyle: TextStyles.greyNormalTextStyle,
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.greyColor),
+              borderRadius: BorderRadius.circular(100),
+            ),
+          ),
           onChanged: onChanged,
           onFieldSubmitted: onFieldSubmitted,
         ),
@@ -53,45 +77,9 @@ class _FilterBarState extends State<FilterBar> {
 
   void onChanged(value) {
     context.read<EventsBloc>().add(EventsEvent.getEventsByName(
-        eventsList: [], name: value, numberOfEvents: 20));
-  }
-
-  BoxDecoration getBoxDecoration() {
-    return BoxDecoration(
-      borderRadius: BorderRadius.circular(100.0),
-      border: Border.all(
-        color: AppColors.orangeColor.withOpacity(0.3),
-        width: 2.0,
-      ),
-    );
-  }
-
-  InputDecoration getDecoration() {
-    return InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(vertical: 12),
-      focusedBorder: getFocusedBorder(),
-      suffixIcon: getGenreFilter(),
-      prefixIcon: getPrefixIcon(),
-      hintText: Strings.searchText,
-      hintStyle: TextStyles.greyNormalTextStyle,
-      border: getBorder(),
-    );
-  }
-
-  OutlineInputBorder getBorder() {
-    return OutlineInputBorder(
-      borderSide: BorderSide(color: AppColors.greyColor),
-      borderRadius: BorderRadius.circular(100),
-    );
-  }
-
-  OutlineInputBorder getFocusedBorder() {
-    return OutlineInputBorder(
-      borderSide: BorderSide(
-        color: AppColors.orangeColor,
-      ),
-      borderRadius: BorderRadius.circular(100),
-    );
+          name: value,
+          numberOfEvents: 20,
+        ));
   }
 
   Widget getPrefixIcon() {
@@ -105,9 +93,8 @@ class _FilterBarState extends State<FilterBar> {
 
   Widget getGenreFilter() {
     return SizedBox(
-      width: 136,
+      width: 128,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           getDivider(),
           const GenresMenu(),
@@ -119,10 +106,7 @@ class _FilterBarState extends State<FilterBar> {
   Widget getDivider() {
     return SizedBox(
       height: 24,
-      child: VerticalDivider(
-        thickness: 1,
-        color: AppColors.greyBorderColor
-      ),
+      child: VerticalDivider(thickness: 1, color: AppColors.greyBorderColor),
     );
   }
 }

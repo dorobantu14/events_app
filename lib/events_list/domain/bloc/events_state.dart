@@ -6,7 +6,6 @@ enum EventsStatus {
   eventsFetched,
   eventsSearchedByGenre,
   eventsSearchedByName,
-  noEventsFound,
   failure,
 }
 

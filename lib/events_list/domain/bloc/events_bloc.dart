@@ -38,42 +38,40 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
   }
 
   Future<void> _onGenreSearchEvent(
-      _GenreSearchEvent event,
-      Emitter<EventsState> emit,
-      ) async {
+    _GenreSearchEvent event,
+    Emitter<EventsState> emit,
+  ) async {
     emit(state.copyWith(status: EventsStatus.loading));
 
-    final result = await _repository.getEventsByGenre(event.genre, event.numberOfEvents);
+    final result =
+        await _repository.getEventsByGenre(event.genre, event.numberOfEvents);
 
     if (result.isSuccess) {
-      if (result.success.isEmpty) {
-        emit(state.copyWith(
-            status: EventsStatus.noEventsFound, eventsList: result.success));
-      } else {
-        emit(state.copyWith(
-            status: EventsStatus.eventsSearchedByGenre, eventsList: result.success, genre: event.genre));
-      }
+      emit(state.copyWith(
+        status: EventsStatus.eventsSearchedByGenre,
+        eventsList: result.success,
+        genre: event.genre,
+      ));
     } else {
       emit(state.copyWith(status: EventsStatus.failure));
     }
   }
 
   Future<void> _onNameSearchEvent(
-      _NameSearchEvent event,
-      Emitter<EventsState> emit,
-      ) async {
+    _NameSearchEvent event,
+    Emitter<EventsState> emit,
+  ) async {
     emit(state.copyWith(status: EventsStatus.loading));
 
-    final result = await _repository.getEventsByName(event.name, event.numberOfEvents);
+    final result =
+        await _repository.getEventsByName(event.name, event.numberOfEvents);
 
     if (result.isSuccess) {
-      if (result.success.isEmpty) {
-        emit(state.copyWith(
-            status: EventsStatus.noEventsFound, eventsList: result.success));
-      } else {
-        emit(state.copyWith(
-            status: EventsStatus.eventsSearchedByName, eventsList: result.success, name: event.name));
-      }
+      emit(state.copyWith(
+        status: EventsStatus.eventsSearchedByName,
+        eventsList: result.success,
+        name: event.name,
+      ));
     } else {
       emit(state.copyWith(status: EventsStatus.failure));
     }

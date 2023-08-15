@@ -21,6 +21,8 @@ dependencies:
   envied: ^0.3.0+3
   intl: ^0.17.0
   envied_generator: ^0.3.0+3
+  url_launcher: ^6.0.10
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   auto_route_generator: ^5.0.3
