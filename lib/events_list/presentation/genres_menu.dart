@@ -12,7 +12,7 @@ class GenresMenu extends StatefulWidget {
 }
 
 class _GenresMenuState extends State<GenresMenu> {
-  List<String> listOfGenres = [
+  final listOfGenres = [
     Strings.filterByGenreText,
     Strings.allGenresText,
     Strings.musicText,
@@ -22,7 +22,7 @@ class _GenresMenuState extends State<GenresMenu> {
     Strings.flutterText,
   ];
 
-  List<bool?> genresCheckboxes = [
+  final genresCheckboxes = [
     null,
     true,
     false,
