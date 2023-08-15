@@ -4,6 +4,9 @@ enum EventsStatus {
   initial,
   loading,
   eventsFetched,
+  eventsSearchedByGenre,
+  eventsSearchedByName,
+  noEventsFound,
   failure,
 }
 
@@ -12,5 +15,7 @@ class EventsState with _$EventsState {
   const factory EventsState({
     @Default(EventsStatus.initial) EventsStatus status,
     @Default([]) List<EventEntity> eventsList,
+    @Default('') String genre,
+    @Default('') String name,
   }) = _EventsState;
 }

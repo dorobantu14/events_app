@@ -9,9 +9,27 @@ class EventsRepository {
 
   final EventsData _eventsData;
 
-  Future<Result<List<EventEntity>, dynamic>> getTodos() async {
+  Future<Result<List<EventEntity>, dynamic>> getEvents(int numberOfEvents) async {
     try {
-      final response = await _eventsData.getEvents();
+      final response = await _eventsData.getEvents(numberOfEvents);
+      return Success(response);
+    } catch (error) {
+      return Failure(error);
+    }
+  }
+
+  Future<Result<List<EventEntity>, dynamic>> getEventsByGenre(String genre, int numberOfEvents) async {
+    try {
+      final response = await _eventsData.getEventsByGenre(genre, numberOfEvents);
+      return Success(response);
+    } catch (error) {
+      return Failure(error);
+    }
+  }
+
+  Future<Result<List<EventEntity>, dynamic>> getEventsByName(String name, int numberOfEvents) async {
+    try {
+      final response = await _eventsData.getEventsByName(name, numberOfEvents);
       return Success(response);
     } catch (error) {
       return Failure(error);
