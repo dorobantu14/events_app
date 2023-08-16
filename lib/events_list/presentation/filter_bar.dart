@@ -89,6 +89,7 @@ class _FilterBarState extends State<FilterBar> {
     return SizedBox(
       width: textEditingController.value.text != '' ? 148 : 128,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           getCloseIcon(),
           getDivider(),
