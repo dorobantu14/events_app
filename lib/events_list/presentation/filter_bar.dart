@@ -87,7 +87,7 @@ class _FilterBarState extends State<FilterBar> {
 
   Widget getGenreFilter() {
     return SizedBox(
-      width: 148,
+      width: textEditingController.value.text != '' ? 148 : 128,
       child: Row(
         children: [
           getCloseIcon(),
