@@ -14,12 +14,13 @@ class FilterBar extends StatefulWidget {
 
 class _FilterBarState extends State<FilterBar> {
   final focusNode = FocusNode();
-  String? initialValueText;
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     focusNode.addListener(refreshCallback);
+    textEditingController.addListener(refreshCallback);
   }
 
   void refreshCallback() {
@@ -42,7 +43,7 @@ class _FilterBarState extends State<FilterBar> {
               )
             : const BoxDecoration(),
         child: TextFormField(
-          initialValue: initialValueText,
+          controller: textEditingController,
           cursorColor: AppColors.greyColor,
           focusNode: focusNode,
           decoration: InputDecoration(
@@ -63,16 +64,9 @@ class _FilterBarState extends State<FilterBar> {
             ),
           ),
           onChanged: onChanged,
-          onFieldSubmitted: onFieldSubmitted,
         ),
       ),
     );
-  }
-
-  void onFieldSubmitted(value) {
-    setState(() {
-      initialValueText = value;
-    });
   }
 
   void onChanged(value) {
@@ -93,12 +87,30 @@ class _FilterBarState extends State<FilterBar> {
 
   Widget getGenreFilter() {
     return SizedBox(
-      width: 128,
+      width: 148,
       child: Row(
         children: [
+          getCloseIcon(),
           getDivider(),
           const GenresMenu(),
         ],
+      ),
+    );
+  }
+
+  Widget getCloseIcon() {
+    return Visibility(
+      visible: textEditingController.value.text != '',
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            textEditingController = TextEditingController();
+            context
+                .read<EventsBloc>()
+                .add(const EventsEvent.getAllEvents(numberOfEvents: 20));
+          });
+        },
+        child: SvgPicture.asset(Strings.closeIconPath),
       ),
     );
   }

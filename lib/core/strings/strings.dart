@@ -7,6 +7,7 @@ abstract class Strings {
   static const String chevronDownIconPath = 'assets/images/chevron_down.svg';
   static const String chevronUpIconPath = 'assets/images/chevron_up.svg';
   static const String noResultIconPath = 'assets/images/no_result.svg';
+  static const String closeIconPath = 'assets/images/close.svg';
 
   // text
   static const String appTitle = 'Events App';
