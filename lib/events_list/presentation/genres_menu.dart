@@ -104,6 +104,7 @@ class _GenresMenuState extends State<GenresMenu> {
   void onSelected(String choice) {
     setState(() {
       chosenGenre = choice;
+      isMenuExtended = false;
       genresCheckboxes.fillRange(1, genresCheckboxes.length, false);
       genresCheckboxes[listOfGenres.indexOf(choice)] = true;
       if (choice == Strings.allGenresText) {
